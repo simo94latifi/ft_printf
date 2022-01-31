@@ -29,8 +29,8 @@ int main(void)
 	//ft_printf("value of  on ftprintf : %x  \n", n);
 	//printf("value of on printf : %x  \n", n);
 	//ft_putnbr(1338);
-	//ft_printf("value is %s", tab);
-	res = ft_printf(" hey i%c %d @@ \n", z, n);
+	ft_printf("value is %c", z);
+	//res = ft_printf(" hey i%c %d @@ \n", z, n);
 	//printf("count is : %d \n", res);
 	//ft_printf("add of z %p", z);
 	//ft_printf("%%%%%d", 15);

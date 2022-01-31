@@ -1,8 +1,23 @@
 #include "ft_printf.h"
 
-void	ft_putchar(char c)
+int	ft_putchar(char c)
 {
 	write(1, &c, 1);
+	return(1);
+}
+
+int	ft_putstr(char *str)
+{
+	int	i;
+	int	count;
+
+	i = 0;
+	while(str[i] != '\0')
+	{
+		count += ft_putchar(str[i]);
+		i++;
+	}
+	return (count);
 }
 
 void	ft_putnbr(int n, int base)
@@ -26,6 +41,20 @@ void	ft_putnbr(int n, int base)
 		ft_putnbr(n % base, base);
 	}
 }
+int	get_digits(int n)
+{
+	int	i;
+
+	i = 0;
+	if (n == 0)
+		i++;
+	while (n)
+	{
+		n /= 10;
+		i++;
+	}
+	return (i);
+}
 
 void	ft_putnbr_unsigned_int(unsigned int n)
 {
@@ -47,9 +76,9 @@ void	ft_putnbr_unsigned_int(unsigned int n)
 void	ft_putnbr_hex(unsigned long long int n, char sign)
 {
 	char *i;
-	if (sign == 'u')
+	if (sign == 'X')
 		i = "0123456789ABCDEF";
-	else if (sign == 'l')
+	else if (sign == 'x')
 		i = "0123456789abcdef";
 
 	if (n < 16)
@@ -62,15 +91,28 @@ void	ft_putnbr_hex(unsigned long long int n, char sign)
 		ft_putnbr_hex(n % 16, sign);
 }
 
-
-void	ft_putstr(char *str)
+int	is_string(char c, int *counter, va_list ap)
 {
-	int	i;
+	int count;
 
-	i = 0;
-	while(str[i] != '\0')
-	{
-		ft_putchar(str[i]);
-		i++;
-	}
+	count = 0;
+	if(c == 'c')
+	   count += ft_putchar(va_arg(ap, int));
+	else if(c == 's')
+		count += ft_putstr(va_arg(ap, char *));
+	else if(c == 'd' || c == 'i')
+		ft_putnbr(va_arg(ap, int), 10);
+		//count +=
+	else if(c == 'u')
+		ft_putnbr_unsigned_int(va_arg(ap, unsigned int));
+	else if(c == 'X' || c == 'x')
+		ft_putnbr_hex(va_arg(ap, unsigned long long int), c);
+		;//count += ft_putstr(va_arg(ap, char *));
+	if(c == '%')
+		count += ft_putchar('%');
+	else
+		count = 0;
+	*counter += 2;
+	return (count);
+
 }
