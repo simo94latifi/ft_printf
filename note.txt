@@ -10,7 +10,7 @@ va_start, va_arg, va_copy, va_end
 You have to implement the following conversions:
 • %c Prints a single character.
 • %s Prints a string (as defined by the common C convention).
-• %p The void * pointer argument has to be printed in hexadecimal format.
+• %p pat.
 • %d Prints a decimal (base 10) number.
 • %i Prints an integer in base 10.
 • %u Prints an unsigned decimal (base 10) number.

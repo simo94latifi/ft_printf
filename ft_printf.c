@@ -16,7 +16,9 @@ int ft_printf(const char *format, ...)
 		if(format[*counter] == '%')
 		{
 			total += is_string(format[*counter + 1], counter, ap);
-			if(total)
+			if(!total || format[*counter] == '\0')
+				break;
+			else if (total)
 				continue;
 		}
 		total += ft_putchar(format[*counter]);
@@ -31,13 +33,23 @@ int main(void)
 
 	char z = 'Z';
 	char tab[] = "Simo";
-	int res;
-	int n = 1337;
-	//res = ft_printf("hh %s%s", "www", tab);
+	int res = 44025;
+	int pp;
+	printf ("%d",printf("%p", &pp));
+	printf("\n");
+	printf ("%d",ft_printf("%p", &pp));
+
+	/*
+	printf("\n%d printf \n", &pp);
+	ft_printf("\n%d ft_printf \n", &pp);
+	printf("\n nostro : %d \n", ciao);
+	printf("\n%d printf \n", pp);
+	printf("\n%p printf \n", &pp);
+	*/
+	//ft_printf("%x%x", res, res);
+	// res = ft_printf("%s", "www");
 	//printf("%d \n", );
 	//printf("value int %d \n ", ft_putnbr(1337, 10));
-	res = ft_printf(" hey i%c %d @@ \n %s", z, n, tab);
-	printf("%d \n", res);
+	//printf("%d", total);putnb
 	return(0);
-
 }

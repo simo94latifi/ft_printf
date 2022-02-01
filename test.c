@@ -1,37 +1,27 @@
 #include "ft_printf.h"
-
-
-/*
-void varfunc(int test, int num, ...)
+int main()
 {
-	int count;
-	count = test;
+    long decimalnum, quotient, remainder;
+    int i, j = 0;
+    char hexadecimalnum[100];
 
-	va_list ap;
-	va_start(ap, test);
-	while(count > 0)
-	{
-		printf("args value is : %d \n", va_arg(ap, int));
-		count--;
-	}
-	va_end(ap);
-}
-*/
-int main(void)
-{
-	//varfunc(4,3, 2,4,4);
-	int n = 16432339;
-	char z = 'Z';
-	int num = -1;
-	int res;
-	char tab[] = "Boook";
-	//ft_printf("the value of school is : %d \n", n);
-	//ft_printf("value of  on ftprintf : %x  \n", n);
-	//printf("value of on printf : %x  \n", n);
-	//ft_putnbr(1338);
-	ft_printf("value is %c", z);
-	//res = ft_printf(" hey i%c %d @@ \n", z, n);
-	//printf("count is : %d \n", res);
-	//ft_printf("add of z %p", z);
-	//ft_printf("%%%%%d", 15);
+    printf("Enter decimal number: ");
+    scanf("%ld", &decimalnum);
+
+    quotient = decimalnum; //numero decimale
+
+    while (quotient != 0)
+    {
+        remainder = quotient % 16;
+        if (remainder < 10)
+            hexadecimalnum[j++] = 48 + remainder;
+        else
+            hexadecimalnum[j++] = 55 + remainder;
+        quotient = quotient / 16;
+    }
+
+    // display integer into character
+    for (i = j; i >= 0; i--)
+            printf("%c", hexadecimalnum[++i]);
+    return 0;
 }
