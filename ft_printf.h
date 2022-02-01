@@ -6,7 +6,7 @@
 int		ft_printf(const char *, ...);
 
 int	ft_putchar(char c);
-void	ft_putnbr(int n, int base);
+int	ft_putnbr(int n, int base);
 int	ft_putstr(char *str);
 int	get_digits(int n);
 void	ft_putnbr_unsigned_int(unsigned int n);
