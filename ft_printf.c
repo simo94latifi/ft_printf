@@ -35,9 +35,9 @@ int main(void)
 	char tab[] = "Simo";
 	int res = 44025;
 	int pp;
-	printf ("%d",printf("%p", &pp));
+	printf ("%d",printf("%p", &tab));
 	printf("\n");
-	printf ("%d",ft_printf("%p", &pp));
+	printf ("%d",ft_printf("%p", &tab));
 
 	/*
 	printf("\n%d printf \n", &pp);

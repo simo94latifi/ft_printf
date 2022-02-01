@@ -79,6 +79,15 @@ void	ft_putnbr_hex(unsigned long long int n, char sign)
 		ft_putnbr_hex(n % 16, sign);
 }
 
+int ft_putptrnbr(va_list ap)
+{
+	unsigned long int add = va_arg(ap, unsigned long int);
+	ft_putchar('0');
+	ft_putchar('x');
+	ft_putnbr_hex(add, 'x');
+	return (count_nbrx(add) + 6);
+}
+
 int	is_string(char c, int *counter, va_list ap)
 {
 	int total;
@@ -109,15 +118,6 @@ int	is_string(char c, int *counter, va_list ap)
 		total += ft_putchar('%');
 	*counter += 2;
 	return (total);
-}
-
-int ft_putptrnbr(va_list ap)
-{
-	unsigned long int add = va_arg(ap, unsigned long int);
-	ft_putchar('0');
-	ft_putchar('x');
-	ft_putnbr_hex(add, 'x');
-	return (count_nbrx(add) + 2);
 }
 
 int count_nbr(int n)
